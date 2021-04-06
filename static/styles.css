@@ -1,0 +1,148 @@
+body{
+  margin: 0px;
+  padding: 0px;
+  font-family: sans-serif;
+}
+
+.top{
+  text-align: center;
+  text-transform: uppercase;
+  margin: 35px 0 20px;
+}
+.top label{
+  font-size: 18px;
+  position: relative;
+  top: -11px;
+  letter-spacing: 1px;
+  /* color: #999999;
+  font-weight: bold; */
+  color: #6D6A63 ;
+  font-weight:600;
+}
+.top .fonticon{
+  font-size: 30px;
+  color: #F6B754;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.nav-item.active{
+  color: #F6B754 !important;
+}
+
+.navbar-brand{
+  /* display: none; */
+
+
+}
+#brand-img{
+    width: 150px;
+}
+  @media only screen and (max-width:768px){
+    .navbar-brand{
+      display: inline-block;
+    }
+  }
+.navbar-nav a{
+  font-weight: bold;
+  color: #6D6A63 !important;
+  text-transform: uppercase;
+}
+.nav-item{
+  margin-left: 36px;
+  margin-right: 36px;
+  font-size: 14px;
+}
+
+.navbar-nav a:hover{
+  color: #F6B754 !important;
+  text-decoration: underline;
+}
+
+.Nav{
+  position: relative;
+}
+
+.DivButton{
+  height: 400px;
+  width: 80%;
+  background-color: #003748;
+  margin: auto;
+  border-radius: 10px;
+  position: relative;
+}
+
+.btn-custom{
+  background-color: #F6B754;
+  border-radius: 20px;
+  position: absolute;
+  margin: auto;
+  left: 0px;
+  right: 0px;
+  top:58%;
+
+}
+
+.resizeImage img{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.position{
+  margin-left: 10px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.components{
+  text-transform: uppercase;
+  font-size: 18px;
+  text-align: center;
+  padding-left:90px;
+  padding-right: 43px;
+}
+
+.components h3{
+  color: #003748;
+}
+.btn.section2{
+  border-radius: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+
+.src1{
+  padding-top: 38px;
+  padding-bottom: 15px;
+}
+
+.src2{
+  padding-top: 20px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#sticky-nav {
+  overflow: hidden;
+
+}
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+
+
+
+/* .navbar-nav a:active{
+  color: white !important;
+} */

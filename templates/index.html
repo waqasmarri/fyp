@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Image Cap/'t</title>
+  
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+   <!-- CSS Style Sheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+  <section class="title">
+    <div class="top">
+      <h1 class="fonticon">image captioning</h1>
+      <label>Capture the World </label>
+    </div>
+  </section>
+
+
+  <hr class="m-0 p-0">
+
+  <section class="Nav"  id="sticky-nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <a class="navbar-brand" href="#"><img src="/static/logo.png" alt="" id="brand-img"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto mr-auto">
+      <a class="nav-item nav-link active" href="#">Home</a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+    </div>
+  </div>
+</nav>
+    <!-- <nav class="navbar navbar-expand">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto mr-auto">
+          <a class="nav-item nav-link active" href="#">Home</a>
+          <a class="nav-item nav-link" href="#">Features</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+        </div>
+      </div>
+    </nav> -->
+  </section>
+
+
+
+  <section class="center">
+    <div class="DivButton">
+      <button type="button" class="btn btn-warning btn-custom " name="button">CLICK TO CONTINUE WITH US</button>
+    </div>
+
+    <br><br>
+
+    <div class="subsribe">
+      <form class="form-inline">
+        <div class="form-group mb-2">
+          <label for="staticEmail2" class="sr-only">Email</label>
+          <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Subsribe to Us.">
+        </div>
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="inputPassword2" class="sr-only">Password</label>
+          <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+      </form>
+    </div>
+
+    <br>
+
+  </section>
+
+  <hr>
+
+  <section>
+
+    <div class="container">
+
+      <div class="row position">
+        <div class="col-lg-6 resizeImage">
+          <div class="">
+            <img id="image-caps" src="/static/TEST4.jpg" alt="">
+            <p id="caps">Caption: (Please upload a picture first)</p>
+          </div>
+        </div>
+
+        <div class="col-lg-6 components">
+
+          <div class="">
+            <h3> gets started</h3>
+          </div>
+
+
+          <div class="src1">
+            <form method="POST" action="/uploader" id="upload-file" enctype=multipart/form-data>
+              <input type="file" name="file" class="form-control-file" required="required">
+              <button type="submit" class="btn btn-warning section2" id="upload-btn">add your image</button>
+            </form>
+          </div>
+
+          <hr>
+
+          <div class="src2">
+            <input type="text" class="form-control" id="inputPassword2" placeholder="Link">
+            <br>
+            <button type="submit" class="btn btn-outline-warning">Submit</button>
+          </div>
+
+        </div>
+      </div>
+  </section>
+  <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+  window.onscroll = function() {myFunction()};
+
+  var navbar = document.getElementById("sticky-nav");
+  // console.warn(navbar);
+  var sticky = navbar.offsetTop;
+  $('#brand-img').hide();
+
+  function myFunction() {
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("sticky");
+      $('#brand-img').show();
+    } else {
+      navbar.classList.remove("sticky");
+      $('#brand-img').hide();
+    }
+  }
+
+  $(document).ready(function () {
+    $('#upload-btn').on('click',function (e) {
+      e.preventDefault();
+       var form_data = new FormData($('#upload-file')[0]);
+        $.ajax({
+            type: 'POST',
+            url: '/uploader',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            success: function(data) {
+                console.log(data);
+                $('#image-caps').attr('src',data.name);
+                $('#caps').html('Caption: '+data.caption);
+            },
+        });
+    });
+  });
+  </script>
+</body>
+
+</html>
