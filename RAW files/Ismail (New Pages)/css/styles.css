@@ -55,7 +55,7 @@ body{
    border-color: black;
 }
 .navbar  .navbar-toggler .navbar-toggler-icon{
-   background-color: black;
+   /*background-color: black;*/
 }
 @media only screen and (max-width:991px){
   .navbar-nav.ml-auto{
@@ -65,7 +65,11 @@ body{
   }
 }
 
-
+  @media only screen and (max-width:768px){
+    .navbar-brand{
+      display: inline-block;
+    }
+  }
 
 
 .DivButton{
@@ -221,4 +225,25 @@ body{
   color: #E2B603;
   text-align: center;
   padding-top: 10px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+#sticky-nav {
+  overflow: hidden;
+
+}
+
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+#brand-img{
+    width: 150px;
 }
