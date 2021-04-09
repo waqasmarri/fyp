@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <title>Image Cap/'t</title>
-  
+
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -90,11 +90,9 @@
     <div class="container">
 
       <div class="row position">
-        <div class="col-lg-6 resizeImage">
-          <div class="">
-            <img id="image-caps" src="/static/TEST4.jpg" alt="">
+        <div class="col-lg-6 ">
+            <img class="demoImage resizeImage" id="image-caps" src="/static/TEST4.jpg" alt="">
             <p id="caps">Caption: (Please upload a picture first)</p>
-          </div>
         </div>
 
         <div class="col-lg-6 components">
@@ -159,11 +157,24 @@
             contentType: false,
             cache: false,
             processData: false,
+            beforeSend: function(){
+              $('#caps').html('Caption: AAAAAAAAAAAAAAAAAAAA');
+              // $('.demoImage').css('width', '20%')
+              // $('.demoImage').css('height', '20%')
+              $('.demoImage').removeClass('resizeImage')
+              $('.demoImage').addClass('loader')
+              $('.demoImage').attr('src', 'static/Rolling-0.6s-291px.gif')
+            },
             success: function(data) {
                 console.log(data);
+                $('.demoImage').removeClass('loader')
+                $('.demoImage').addClass('resizeImage')
                 $('#image-caps').attr('src',data.name);
                 $('#caps').html('Caption: '+data.caption);
             },
+            error(request, error){
+                alert("File Format Invalid! Try Again.")
+            }
         });
     });
   });
