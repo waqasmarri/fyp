@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request, redirect, url_for,render_template
 from werkzeug.utils import secure_filename
-# from Image_Captioning_InceptionV3 import predict_captions_manual
+from Image_Captioning_InceptionV3 import predict_captions_manual
 import json
 import shutil
 import requests
@@ -14,21 +14,17 @@ app = Flask(__name__)
 def home():
    return render_template('/index.html')
 
-# @app.route('/uploader', methods = ['GET', 'POST'])
-# def upload_file():
-# 	if request.method == 'POST':
-# 		f = request.files['file']
-
-# 		f.save(secure_filename(f.filename))
-
-# 		source = os.getcwd()+'\\'+f.filename
-# 		destination = 'static/'+f.filename
-
-# 		shutil.move(source, destination)
-
-# 		data ={"name": destination,"caption": predict_captions_manual(destination)}
-# 		response = app.response_class(response=json.dumps(data),mimetype='application/json')
-# 		return response
+@app.route('/uploader', methods = ['GET', 'POST'])
+def upload_file():
+	if request.method == 'POST':
+		f = request.files['file']
+		f.save(secure_filename(f.filename))
+		source = os.getcwd()+'\\'+f.filename
+		destination = 'static/'+f.filename
+		shutil.move(source, destination)
+		data ={"name": destination,"caption": predict_captions_manual(destination)}
+		response = app.response_class(response=json.dumps(data),mimetype='application/json')
+		return response
 
 @app.route('/link', methods = ['GET', 'POST'])
 def link():
