@@ -83,11 +83,19 @@ body{
 
 }
 
-.resizeImage img{
+.resizeImage{
   width: 100%;
   height: 100%;
   border-radius: 10px;
 }
+
+.loader{
+  width: 8%;
+  height: 10%;
+  margin-top: 100px;
+  margin-left: 190px;
+}
+
 
 .position{
   margin-left: 10px;

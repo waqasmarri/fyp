@@ -3,13 +3,14 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Image Cap/'t</title>
-  
-  <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Image Captioning</title>
 
-   <!-- CSS Style Sheet -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- CSS Style Sheet -->
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='file-upload.css') }}">
 </head>
 
 <body>
@@ -26,20 +27,20 @@
 
   <section class="Nav"  id="sticky-nav">
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
-  <a class="navbar-brand" href="#"><img src="/static/logo.png" alt="" id="brand-img"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav ml-auto mr-auto">
-      <a class="nav-item nav-link active" href="#">Home</a>
-      <a class="nav-item nav-link" href="#">Features</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-      <a class="nav-item nav-link" href="#">Pricing</a>
-    </div>
-  </div>
-</nav>
+      <a class="navbar-brand" href="#"><img src="/static/logo.png" alt="" id="brand-img"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto mr-auto">
+          <a class="nav-item nav-link active" href="#">Home</a>
+          <a class="nav-item nav-link" href="#">Features</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+          <a class="nav-item nav-link" href="#">Pricing</a>
+        </div>
+      </div>
+    </nav>
     <!-- <nav class="navbar navbar-expand">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -90,11 +91,9 @@
     <div class="container">
 
       <div class="row position">
-        <div class="col-lg-6 resizeImage">
-          <div class="">
-            <img id="image-caps" src="/static/TEST4.jpg" alt="">
+        <div class="col-lg-6 ">
+            <img class="demoImage resizeImage" id="image-caps" src="/static/TEST4.jpg" alt="">
             <p id="caps">Caption: (Please upload a picture first)</p>
-          </div>
         </div>
 
         <div class="col-lg-6 components">
@@ -106,7 +105,15 @@
 
           <div class="src1">
             <form method="POST" action="/uploader" id="upload-file" enctype=multipart/form-data>
-              <input type="file" name="file" class="form-control-file" required="required">
+              <!-- <input type="file" name="file" class="form-control-file" required="required"> -->
+              <div class="form-group file-area">
+<!--                 <label for="images">Images <span>Your images should be at least 400x300 wide</span></label>
+ -->                <input type="file" name="file" id="images" required="required"/>
+                <div class="file-dummy">
+                  <div class="success">Great, your files are selected. Keep on.</div>
+                  <div class="default">Please select some files</div>
+                </div>
+              </div>
               <button type="submit" class="btn btn-warning section2" id="upload-btn">add your image</button>
             </form>
           </div>
@@ -121,19 +128,19 @@
 
         </div>
       </div>
-  </section>
-  <!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    </section>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-  window.onscroll = function() {myFunction()};
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      window.onscroll = function() {myFunction()};
 
-  var navbar = document.getElementById("sticky-nav");
+      var navbar = document.getElementById("sticky-nav");
   // console.warn(navbar);
   var sticky = navbar.offsetTop;
   $('#brand-img').hide();
@@ -159,15 +166,28 @@
             contentType: false,
             cache: false,
             processData: false,
+            beforeSend: function(){
+              $('#caps').html('Caption: AAAAAAAAAAAAAAAAAAAA');
+              // $('.demoImage').css('width', '20%')
+              // $('.demoImage').css('height', '20%')
+              $('.demoImage').removeClass('resizeImage')
+              $('.demoImage').addClass('loader')
+              $('.demoImage').attr('src', 'static/Rolling-0.6s-291px.gif')
+            },
             success: function(data) {
                 console.log(data);
+                $('.demoImage').removeClass('loader')
+                $('.demoImage').addClass('resizeImage')
                 $('#image-caps').attr('src',data.name);
                 $('#caps').html('Caption: '+data.caption);
             },
+            error(request, error){
+                alert("File Format Invalid! Try Again.")
+            }
         });
     });
   });
-  </script>
+</script>
 </body>
 
 </html>
