@@ -4,6 +4,7 @@ from werkzeug.utils import secure_filename
 from Image_Captioning_InceptionV3 import predict_captions_manual
 import json
 import shutil
+import requests
 # from file import test_fun
 #app = Flask('app')
 
@@ -26,6 +27,18 @@ def upload_file():
 		response = app.response_class(response=json.dumps(data),mimetype='application/json')
 		return response
 
+@app.route('/link', methods = ['GET', 'POST'])
+def link():
+	link = request.args.get("link")
+	response = requests.get(link)
+	return link
+	file = open("static/asdasd.jpg", "wb")
+	file.write(response.content)
+	file.close()
+	destination = "static/sample_image.png"
+	data ={"name": destination,"caption": predict_captions_manual(destination)}
+	response = app.response_class(response=json.dumps(data),mimetype='application/json')
+	return response
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.1.1.1', port=9000)

@@ -121,9 +121,11 @@
           <hr>
 
           <div class="src2">
-            <input id="link" type="text" class="form-control" id="inputPassword2" placeholder="Link">
-            <br>
-            <button id="submit-link" type="submit" class="btn btn-outline-warning">Submit</button>
+            <form method="GET" action="/link">
+              <input id="link" type="text" class="form-control" id="inputPassword2" placeholder="Link">
+              <br>
+              <button id="submit-link" type="submit" class="btn btn-outline-warning">Submit</button>
+            </form>
           </div>
 
         </div>
@@ -186,13 +188,13 @@
             }
         });
     });
-    $('#link-submit').on('click',function (e) {
-      e.preventDefault();
-       var form_data = new FormData($('#upload-file')[0]);
+    $('#submit-link').on('click',function (e) {
+      // e.preventDefault();
+       // var form_data = new FormData($('#link')[0]);
         $.ajax({
             type: 'POST',
             url: '/link',
-            data: form_data,
+            data: {"link":$('#link').val()},
             contentType: false,
             cache: false,
             processData: false,
