@@ -1,0 +1,495 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Image Captioning</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="robots" content="index, follow" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='NEWUI/images/favicon.ico') }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='NEWUI/css/reset.css') }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='NEWUI/css/plugins.css') }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='NEWUI/css/style.css') }}">
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='NEWUI/css/color.css') }}">
+</head>
+
+<body>
+  <!--loader-->
+  <div class="loader-wrap">
+    <div class="pin"></div>
+  </div>
+  <!--loader end-->
+  <!-- Main  -->
+  <div id="main">
+    <div class="">
+      <!-- wrapper-->
+      <div id="wrapper">
+        <!-- scroll-nav-wrap-->
+        <div class="scroll-nav-wrap" style="z-index: 12; margin-top: 0px; position: fixed; top: 0px; margin-left: 0px">
+          <div class="scroll-down-wrap">
+            <span>Image Captioning</span>
+          </div>
+          <nav class="scroll-nav scroll-init">
+            <ul>
+              <li><a class="scroll-link act-link" href="#sec1">Home</a></li>
+              <li><a class="scroll-link" href="#sec2">Prediction</a></li>
+              <li><a class="scroll-link" href="#sec3">How to Use</a></li>
+              <li><a class="scroll-link" href="#sec4">How it Works</a></li>
+
+            </ul>
+          </nav>
+        </div>
+        <!-- scroll-nav-wrap end-->
+
+        <!-- Content-->
+        <div class="content">
+          <!-- section-->
+          <section id="sec1">
+            <div class="section-subtitle">
+              <span>//</span>Words About
+            </div>
+            <div class="container">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="collage-image fl-wrap">
+                    <div class="collage-image-title">Image Captioning</div>
+                    <img src="/static/NEWUI/images/amy-hh-N_rO_uCRU5g-unsplash.jpg" class="respimg" alt="">
+                  </div>
+                </div>
+                <div class="col-md-7">
+                  <div class="main-about fl-wrap">
+                    <h2>Understand the world<br><span>through Images</span></h2>
+                    <p> Use our Model to generate caption for your images and see the world through a
+                      different perspective.
+                      A satirical, compact and technological way to label or generate descriptions for
+                      your images. <br>
+                      Easy to Use, Instructions for Every Step and An Efficient Way.
+                    </p>
+                    <!-- features-box-container -->
+                    <div class="features-box-container fl-wrap">
+                      <div class="row">
+                        <!--features-box -->
+                        <div class="features-box col-md-6">
+                          <div class="time-line-icon">
+                            <i class="fal fa-file-upload"></i>
+                          </div>
+                          <h3>Upload Image</h3>
+                          <p> Upload any desired image inorder to get a caption. </p>
+                        </div>
+                        <!-- features-box end  -->
+                        <!--features-box -->
+                        <div class="features-box col-md-6">
+                          <div class="time-line-icon">
+                            <i class="fal fa-object-group"></i>
+                          </div>
+                          <h3>Object Detection</h3>
+                          <p> Objects will be identified, importance they hold in the context, and
+                            their relationship
+                            with one another.
+                          </p>
+                        </div>
+                        <!-- features-box end  -->
+                        <!--features-box -->
+                        <div class="features-box col-md-6">
+                          <div class="time-line-icon">
+                            <i class="fal fa-closed-captioning"></i>
+                          </div>
+                          <h3>Caption</h3>
+                          <p> Caption that describes the scene best will be displayed.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- features-box-container end  -->
+                    <nav class=" scroll-init">
+                      <ul>
+                        <li><a class="scroll-link btn float-btn flat-btn color-btn" href="#sec2">Try
+                            Now</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-parallax-module" data-position-top="90" data-position-left="25" data-scrollax="properties: { translateY: '-250px' }"></div>
+            <div class="bg-parallax-module" data-position-top="70" data-position-left="70" data-scrollax="properties: { translateY: '150px' }"></div>
+          </section>
+          <!-- section end-->
+          <!-- section  -->
+          <section id="sec2" class="dark-bg ">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6">
+                    <div class="video-box fl-wrap">
+                        <img src="/static/NEWUI/images/all/2.jpg" class="respimg" alt="" id="output">
+                        <h4 style="color: white;" id="img-caps">Caption: Please Upload an Image First.</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="video-promo-text fl-wrap ">
+                    <h3>Upload an Image</h3>
+                    <div class="form-wrapper">
+                      <form method="POST" action="/uploader" id="upload-file" enctype="multipart/form-data">
+                        <div id="file-upload-input" class="form-group file-area">
+                          <input type="file" name="file" id="images" required="required" accept="image/*" onchange="readURL(this);" />
+                          <div class="file-dummy">
+                            <div class="success text-white" id="img-success">Image Selected.</div>
+                            <div class="default text-white">Please select an Image</div>
+                          </div>
+                        </div>
+                      </form>
+                      <h3 class="h4">Or Paste a link to an Image</h3>
+                      <div class="subcribe-form fl-wrap">
+                        <form id="subscribe" class="fl-wrap">
+                          <input class="enteremail invalid-link" name="email" id="subscribe-email" placeholder="Link" spellcheck="false" type="text">
+                          <button type="submit" id="subscribe-button" class="subscribe-button"><i class="fal fa-paper-plane"></i></button>
+                          <label for="subscribe-email" class="subscribe-message"></label>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+          <!-- sectio endn-->
+
+          <!-- section-->
+          <section id="sec3">
+            <div class="section-subtitle">
+              <span>//</span>USE ME
+            </div>
+            <div class="container">
+              <!-- section-title -->
+              <div data-aos="fade-up" class="section-title fl-wrap">
+                <h3>How i Work</h3>
+                <h2>How To <span>Use</span></h2>
+                <p> Using this Web Application is simple and easy. </p>
+              </div>
+              <!-- section-title end -->
+              <!--process-wrap  -->
+              <div class="process-wrap fl-wrap">
+                <ul>
+                  <li>
+                    <div class="time-line-icon">
+                      <i class="fab fa-slideshare"></i>
+                    </div>
+                    <h4>Get Started</h4>
+                    <div data-aos="flip-left" class="process-details">
+                      <h6>Navigate to the Prediction Section</h6>
+                      <p>
+                        In the navigation bar of the web page click on predition,
+                        and get redirected to the prediction section.
+                      </p>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="time-line-icon">
+                      <i class="fal fa-laptop"></i>
+                    </div>
+                    <h4>Next Step</h4>
+                    <div data-aos="flip-left" class="process-details">
+                      <h6>Upload File </h6>
+                      <p>After getting redirected, Select an image from local or
+                        paste a web link to an image, then click submit to send it to our server for
+                        processing.
+                      </p>
+
+                    </div>
+
+                  </li>
+                  <li>
+                    <div class="time-line-icon">
+                      <i class="fal fa-flag-checkered"></i>
+                    </div>
+                    <h4>Final Goal</h4>
+                    <div data-aos="flip-left" class="process-details">
+                      <h6>Hold onto your nerves</h6>
+                      <p>
+                        After uploading image or submitting any web images via link
+                        wait a while till model returns the predicted caption on the web page. </p>
+
+                    </div>
+
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+
+          </section>
+
+          <!-- section-->
+          <section id="sec4">
+            <div class="section-subtitle">Working
+              <span>//</span>
+            </div>
+            <div class="container">
+              <!-- section-title -->
+              <div data-aos="fade-up" class="section-title fl-wrap">
+                <h3>Some Words About Our Project</h3>
+                <h2>How It <span> Works</span></h2>
+                <p>
+                  The MultiModel neural network architecture that brings the CNN and LSTM
+                  models into one has achieved state-of-the-art results on image caption.
+                </p>
+              </div>
+              <!-- section-title end -->
+              <!-- custom-inner-holder -->
+              <div class="custom-inner-holder">
+                <!-- custom-inner -->
+                <div class="custom-inner">
+                  <div data-aos="fade-up" class="row">
+                    <div class="col-md-4">
+                      <div class="custom-inner-header workres">
+                        <i class="fal fa-sitemap"></i>
+                        <h3> Model Architecture</h3>
+                      </div>
+                    </div>
+                    <div class="col-md-4"><img src="/static/NEWUI/images/image_cap_arch.png" class="respimg" alt=""></div>
+                    <div class="col-md-4">
+                      <div class="custom-inner-content fl-wrap">
+                        <h4>Language Model and Feature Extraction</h4>
+                        <p> We stop the caption generation process when the language model emits an
+                          END token
+                          or the length of the caption increases a threshold. In the demo, this
+                          threshold has been
+                          set to 40 which is the maximum length of captions in Flickr8k dataset.
+                        </p>
+                        <ul>
+                          <li>The Feature Extractor : which takes an image as input and outputs a
+                            low dimensional
+                            condensed repersentation of the image.
+                          </li>
+                          <li>The Language Model : which takes the condensed representation and a
+                            special START
+                            token and generates a caption
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- custom-inner end -->
+                <!-- custom-inner -->
+                <div class="custom-inner">
+                  <div data-aos="fade-up" class="row">
+                    <div class="col-md-4">
+                      <div class="custom-inner-header educ">
+                        <i class="fal fa-file-video"></i>
+                        <h3> Model Summary </h3>
+                      </div>
+                    </div>
+                    <div class="col-md-5">
+                      <div class="custom-inner-content fl-wrap">
+                        <h4>Final Model</h4>
+                        <p> Trained Image model and Caption model will be
+                          merged via Keras to perform predictions.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <img src="/static/NEWUI/images/code_modules.png" style="max-height:450px;">
+                    </div>
+                  </div>
+                </div>
+                <!-- custom-inner end -->
+              </div>
+              <!--process-wrap   end-->
+              <div data-aos="fade-up" class="fl-wrap mar-top">
+                <div class="srv-link-text">
+                  <h4>Need more info ? Download SRS : </h4>
+                  <a href="services.html" class="btn float-btn flat-btn color-btn">Download</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <!-- section end-->
+
+          <!-- section end -->
+          <!-- section -->
+
+          <!-- section end -->
+        </div>
+        <!-- Content end -->
+        <!-- footer-->
+        <div class="height-emulator fl-wrap"></div>
+        <footer class="main-footer fixed-footer">
+          <!--footer-inner-->
+          <div class="footer-inner fl-wrap">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-2">
+                  <div class="footer-title fl-wrap">
+                    <span>Image Captioning</span>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="footer-header fl-wrap"><span>01.</span>Last Twitts</div>
+                  <div class="footer-box fl-wrap">
+                    <div class="twitter-swiper-container fl-wrap" id="twitts-container"></div>
+                    <a href="#" class="btn float-btn trsp-btn">Follow</a>
+                  </div>
+                </div>
+                <div class="col-md-5">
+                  <div class="footer-header fl-wrap"><span>02.</span> Subscribe / Contacts</div>
+                  <!-- footer-box-->
+                  <div class="footer-box fl-wrap">
+                    <p>Want to be notified when we launch a new template or an udpate. Just sign up and
+                      we'll send you a notification by email.</p>
+                    <div class="subcribe-form fl-wrap">
+                      <form id="subscribe" class="fl-wrap">
+                        <input class="enteremail" name="email" id="subscribe-email2" placeholder="email" spellcheck="false" type="text">
+                        <button type="submit" id="subscribe-button2" class="subscribe-button"><i class="fal fa-paper-plane"></i> Send </button>
+                        <label for="subscribe-email" class="subscribe-message"></label>
+                      </form>
+                    </div>
+                    <!-- footer-contacts-->
+                    <div class="footer-contacts fl-wrap">
+                      <ul>
+                        <li><i class="fal fa-phone"></i><span>Phone :</span><a href="#">+489756412322</a></li>
+                        <li><i class="fal fa-envelope"></i><span>Email :</span><a href="#">yourmail@domain.com</a></li>
+                        <li><i class="fal fa-map-marker"></i><span>Address</span><a href="#">USA
+                            27TH Brooklyn NY</a></li>
+                      </ul>
+                    </div>
+                    <!-- footer end -->
+                    <!-- footer-socilal -->
+                    <div class="footer-socilal fl-wrap">
+                      <ul>
+                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
+                      </ul>
+                    </div>
+                    <!-- footer-socilal end -->
+                  </div>
+                  <!-- footer-box end-->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--footer-inne endr-->
+          <!--subfooter-->
+          <div class="subfooter fl-wrap">
+            <div class="container">
+              <!-- policy-box-->
+              <div class="policy-box">
+                <span>&#169; ICG 2021 / All rights reserved. </span>
+              </div>
+              <!-- policy-box end-->
+              <a href="#" class="to-top color-bg"><i class="fal fa-angle-up"></i><span></span></a>
+            </div>
+          </div>
+          <!--subfooter end-->
+        </footer>
+        <!-- footer end-->
+
+      </div>
+      <!--   content end -->
+      <!-- share-wrapper -->
+      <div class="share-wrapper isShare">
+        <div class="share-title"><span>Share</span></div>
+        <div class="close-share soa"><span>Close</span><i class="fal fa-times"></i></div>
+        <div class="share-inner soa">
+          <div class="share-container"></div>
+        </div>
+      </div>
+      <!-- share-wrapper end -->
+    </div>
+    <!-- Main end -->
+    <!--=============== scripts  ===============-->
+
+    <script type="text/javascript" src="{{ url_for('static', filename='NEWUI/JS/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='NEWUI/JS/plugins.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='NEWUI/JS/scripts.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='NEWUI/JS/map.js') }}"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        delay: 100,
+        duration: 400,
+      });
+    </script>
+
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#images').on('change', function(e) {
+          e.preventDefault();
+          var form_data = new FormData($('#upload-file')[0]);
+          $.ajax({
+            type: 'POST',
+            url: '/uploader',
+            data: form_data,
+            contentType: false,
+            cache: false,
+            processData: false,
+            beforeSend: function() {
+              $('#img-caps').html('Caption: Loading...');
+              $('#img-success').html('Image Selected');
+              $('#file-upload-input').removeClass('invalid-image');
+              $('#img-caps').removeClass('invalid-caps');
+            },
+            success: function(data) {
+              console.log(data);
+              // $('.demoImage').removeClass('loader')
+              // $('.demoImage').addClass('resizeImage')
+              // $('#image-caps').attr('src', data.name);
+              $('#img-caps').html('Caption: ' + data.caption);
+            },
+            error(request, error) {
+              $('#output').attr('src', "/static/NEWUI/images/all/2.jpg");
+              $('#img-success').html('Please select a valid image');
+              $('#img-caps').addClass('invalid-caps');
+              $('#img-caps').html('Error! Please try again.')
+              $('#file-upload-input').addClass('invalid-image');
+            }
+          });
+        });
+
+
+        $('#subscribe-button').on('click',function (e) {
+            e.preventDefault();
+            var li = $('.enteremail').val()
+            console.log(li)
+            $.ajax({
+                type: 'POST',
+                url: '/link',
+                data: li,
+                contentType: false,
+                cache: false,
+                processData: false,
+                beforeSend: function(){
+                  $('#img-caps').html('Caption: Loading...');
+                  // $('.demoImage').css('width', '20%')
+                  // $('.demoImage').css('height', '20%')
+                  $('#output').removeClass('respimg');
+                  $('#output').attr('src','static/loader1.svg');
+                  $('#img-caps').removeClass('invalid-caps');
+                  $('#subscribe-email').removeClass('invalid-image');
+                },
+                success: function(data) {
+                    console.log(data);
+                    $('#output').removeClass('loader')
+                    $('#output').attr('src',data.name);
+                    $('#img-caps').html('Caption: ' + data.caption);
+                },
+                error(request, error){
+                  $('#output').attr('src', "/static/NEWUI/images/all/2.jpg");
+                  $('#img-caps').addClass('invalid-caps');
+                  $('#img-caps').html('Error! Please try again.')
+                  $('#subscribe-email').addClass('invalid-image');
+                }
+            });
+        });
+
+
+      });
+    </script>
+
+</body>
+
+</html>

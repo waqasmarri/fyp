@@ -93,7 +93,7 @@
       <div class="row position">
         <div class="col-lg-6 " style="position: relative;">
             <img class="demoImage resizeImage" id="image-caps" src="/static/TEST4.jpg" alt="">
-            <p style="position: absolute; bottom: -10%;" id="caps">Caption: (Please upload a picture first)</p>
+            <p style="position: absolute; bottom: -30%;" id="caps">Caption: (Please upload a picture first)</p>
         </div>
 
         <div class="col-lg-6 components">
@@ -194,7 +194,7 @@
         $.ajax({
             type: 'POST',
             url: '/link',
-            data: {"link":$('#link').val()},
+            data: form_data,
             contentType: false,
             cache: false,
             processData: false,
