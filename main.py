@@ -46,7 +46,19 @@ def upload_file2():
         response = app.response_class(response=json.dumps(data),mimetype='application/json')
         return response
 
-
+@app.route('/link-beam', methods = ['GET', 'POST'])
+def link2():
+    if request.method == 'POST':
+        link = request.get_data()
+        link = link.decode('UTF-8')
+        response = requests.get(link)
+        destination = "static/"+link[8:12]+".jpg"
+        file = open(destination, "wb")
+        file.write(response.content)
+        file.close()
+        data ={"name": destination,"caption": beam_search_predictions_manual(destination, beam_index=5)}
+        response = app.response_class(response=json.dumps(data),mimetype='application/json')
+        return response
 
 def returnResponse(destination):
     data ={"name": destination,"caption": predict_captions_manual(destination)}
