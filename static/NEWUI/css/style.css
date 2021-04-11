@@ -777,7 +777,12 @@ section.parallax-section .section-title:before {
  font-size: 25px;
 }
 /*------  Process / services ------------------------------------------------*/
-
+.features-box-container.single-serv {
+	margin-top: 0;
+}
+.features-box-container.single-serv .features-box {
+	margin-bottom: 30px;
+}
 .process-wrap {
 	margin-top:30px;
 }
@@ -786,6 +791,30 @@ section.parallax-section .section-title:before {
 	width: 33.3%;
 	position: relative;
 	padding: 15px 30px 35px 0;
+}
+.process-wrap li .process-details,
+.serv-wrap .process-details {
+	text-align: left;
+	float: left;
+	width: 100%;
+	padding: 35px 40px 30px 40px;
+	background: #f9f9f9;
+	border: 1px solid #eee;
+	position: relative;
+}
+.process-wrap li .process-details a,
+.serv-wrap .process-details ul li {
+	float: left;
+	margin-top: 20px;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	font-weight: 800;
+	font-size: 11px;
+	position: relative;
+}
+.serv-wrap .process-details ul li {
+	margin-top: 10px;
+	margin-right: 10px;
 }
 .process-wrap li h4,
 .serv-wrap h4 {
@@ -846,6 +875,16 @@ section.parallax-section .section-title:before {
 .process-wrap li:last-child:after {
 	color: #666;
 	content: '\f00c';
+}
+.process-numder {
+	position: absolute;
+	bottom: -20px;
+	left: 20px;
+	z-index: 11;
+	color: #f2f2f2;
+	font-size: 60px;
+	font-family: 'Poppins', sans-serif;
+	font-weight: bold;
 }
 .srv-link-text {
 	margin-top:10px;
