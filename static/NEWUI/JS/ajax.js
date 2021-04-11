@@ -43,7 +43,7 @@ $(document).ready(function () {
             processData: false,
             beforeSend: function () {
                 $('#img-caps').html('Caption: Loading...');
-                $('#output').removeClass('respimg');
+                $('#output').addClass('respimg');
                 $('#output').attr('src', 'static/loader1.svg');
                 $('#img-caps').removeClass('invalid-caps');
                 $('#subscribe-email').removeClass('invalid-image');
