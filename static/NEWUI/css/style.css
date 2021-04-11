@@ -1582,41 +1582,12 @@ section.parallax-section .section-title:before {
 	.scroll-nav li {
 		margin-right: 0;
 	}
-	.nav-button {
-		float: right;
-		margin-right: 140px;
-		margin-top: 24px;
-	}
-	.show-share {
-		left: calc(100% - 80px);
-	}
-	.menu-button-text {
-		bottom: 10px;
-	}
-	.inline-facts-wrap {
-		margin-right: 0;
-		width: 50%;
-	}
 	.collage-image,
 	.footer-box {
 		margin-bottom: 50px;
 	}
 	.process-wrap li {
 		width: 50%;
-	}
-	.piechart {
-		width: 50% !important;
-	}
-	.piechart-holder h4,
-	.hidden-info-wrap {
-		float: left;
-		width: 100%;
-	}
-	.skillbar-bg {
-		width: 100%;
-	}
-	.skill-bar-percent {
-		margin-right: 0;
 	}
 	.main-footer {
 		position: relative;
@@ -1628,135 +1599,14 @@ section.parallax-section .section-title:before {
 	.footer-inner {
 		padding: 50px 0 20px;
 	}
-	.share-wrapper {
-		left: 0;
-	}
-	.nav-overlay,
-	.share-wrapper,
-	.nav-holder {
-		top: 80px;
-
-	}
 	.main-about,
 	.video-promo-text,
 	.custom-inner-holder,
 	.fs-carousel-wrap {
 		padding-left: 0;
 	}
-	.hero-decor-numb {
-		left: 20%;
-	}
-	.half-bg-dec {
-		left: 0;
-		width: 30%;
-		padding-left: 20px;
-	}
-	.half-hero-wrap {
-		left: 0;
-		padding: 0 100px;
-		top:20%;
-	}
-	.half-hero-wrap h1 {
-		font-size: 30px;
-		line-height: 50px;
-	}
-	.client-list li a {
-		padding: 15px 30px;
-	}
-	.fet_pr-carousel-title {
-		position: relative;
-		float: left;
-		width: 100%;
-		margin-bottom: 50px;
-		left: 0;
-	}
-	.fet_pr-carousel-title-item {
-		max-width: 92%;
-	}
-	.order-wrap .btn {
-		float: left;
-		margin-top: 50px;
-	}
-	.pr-title {
-		margin-bottom: 40px;
-	}
-	.order-wrap h3 {
-		width: 100%;
-		text-align: left;
-	}
-	.hidden-info-wrap-bg {
-		display: none;
-	}
-	.filter-title {
-		display: none;
-	}
-	.fsp-filter {
-		position: relative;
-		float: left;
-		left: 0;
-		width: 100%;
-		background: #35353A;
-		height: auto;
-		padding: 15px 0;
-	}
-	.gallery-item {
-		width: 33.3% !important;
-	}
 	.subfooter {
 		padding: 0;
-	}
-	.parallax-text {
-		position: relative;
-		bottom: 0;
-		right: 0 !important;
-		left: 0 !important;
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-		float: left;
-		width: 100%;
-		text-align: left;
-		margin-top:30px;
-	}
-	.parallax-text h3,
-	.parallax-text h4,
-	.parallax-text h4 span {
-		float: left !important;
-		text-align: left !important;
-	}
-	.parallax-text .btn,
-	.right-parallax-header {
-		float: left !important;
-	}
-	.pr-list-det {
-		margin-top: 70px;
-	}
-	.buy-album {
-		margin-bottom: 50px;
-	}
-	.mob-bg {
-		display:block;
-	}
-	.order-wrap li {
-		margin-top:50px;
-	}
-	.share-container {
-		top:20%;
-	}
-	.text-carousel-wrap {
-    	padding: 0;
-	}
-	.skill-wrap {
-		margin:20px 0 !important;
-	}
-	.parallax-text {
-		padding:0 10px;
-	}
-	.parallax-item {
-		margin: 20px 0;
-	}
-	.lf-num {
-		left:inherit;
-		right:0;
 	}
 }
 @media only screen and (max-width: 768px) {
