@@ -1632,107 +1632,7 @@ section.parallax-section .section-title:before {
 	}
 }
 @media only screen and (max-width: 564px) {
-	.half-hero-wrap {
-		top: 25%;
-	}
-	.half-hero-wrap h1 {
-		font-size: 26px;
-		line-height: 40px;
-	}
-	.half-hero-wrap h4,
-	.hero-decor-let,
-	.hero-decor-numb,
-	.show-info,
-	.album-list-title,
-	.time  , .blog-filters span{
-		display: none;
-	}
-	.half-hero-wrap .btn {
-		margin-top: 20px !important;
-	}
-	.client-list li {
-		width: 50%;
-	}
-	.client-list li a {
-		padding: 15px 20px;
-	}
-	.half-hero-wrap {
-		left: 0;
-		padding: 0 100px 0 20px;
-	}
-	.gallery-item {
-		width: 100% !important;
-	}
-	.team-box , .blog-search , .blog-btn-filter , .blog-btn  , 	.soon-wrap .countdown-item   , .verify-text{
-		width: 100%;
-	}
-	.verify-text {
-		float:left;
-		margin-bottom:15px;
-	}
-	.hidden-works-item {
-		padding: 25px 20px;
-	}
-	.hidden-info-pagination {
-		padding-left: 20px;
-	}
-	.show-case-slider-wrap {
-		height: 300px;
-	}
-	.show-case-item {
-		height: 220px !important;
-	}
-	.show-case-slider-wrap-style2 .show-case-item {
-		height: 300px !important;
-	}
-	.single-project-title h2 {
-		font-size: 26px;
-	}
-	.playlist-wrap ol li {
-		padding: 20px 0 20px 40px;
-	}
-	.playlist-wrap ol li:before {
-		width: 40px;
-	}
-	.playlist-wrap ol li a.audio-link {
-		padding-right: 30px;
-	}
-	.playlist-wrap ol li a.downbuy-link {
-		right: 20px;
-	}
-	.srv-link-text h4 {
-		margin-bottom: 30px;
-	}
-	.gallery-filters a {
-		width: 100%;
-		text-align: left;
-	}
-	.inline-facts-wrap {
-		width: 100%;
-	}
-	.soon-wrap .half-hero-wrap  {
-    	padding: 0 50px 30px 40px;
-		margin-bottom:70px;
-		top:17%;
-	}
-	.soon-wrap .countdown-item {
-		margin-right:0;
-	}
-	.cs-wrap .subcribe-form {
-		width:300px;
-	}
-	.blog-btn-filter  {
-		margin-bottom:10px;
-	}
-	.blog-search  {
-		margin-top:30px;
-	}
-	.tag-filter {
-		z-index:5;
-	}
-	.error-wrap h2 {
-		font-size:89px;
-	}
+	
 	.process-wrap {
 		margin-top:0;
 	}
@@ -1756,39 +1656,11 @@ section.parallax-section .section-title:before {
 		right:0;
 		bottom:-6px;
 	}
-	.text-carousel .text-carousel-item {
-		padding:30px 20px;
-	}
-	.text-carousel .slick-item {
-		padding: 0;
-	}
-	.text-carousel-controls{
-		padding-left:8px;
-	}
 	.section-title {
 		padding-left:30px;
 	}
 	.section-title h2 {
 		font-size: 26px;
-	}
-	.custom-form button {
-		margin-top:30px;
-	}
-	.custom-form .verify-wrap .selectbox  , .pr-title{
-		margin:0;
-	}
-	.fw-map-container {
-		margin-bottom:20px !important;
-	}
-	.team-box  {
-		padding:10px 0;
-	}
-}
-@media only screen and (-webkit-min-device-pixel-ratio: 2) {
-	.bg {
-		background-attachment: scroll !important;
-		-webkit-background-size: cover;
-		background-position: center;
 	}
 }
 
