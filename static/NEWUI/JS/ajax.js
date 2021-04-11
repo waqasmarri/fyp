@@ -11,9 +11,11 @@ $(document).ready(function () {
             processData: false,
             beforeSend: function () {
                 $('#img-caps').html('Caption: Loading...');
+                $('#output').addClass('respimg');
                 $('#img-success').html('Image Selected');
                 $('#file-upload-input').removeClass('invalid-image');
                 $('#img-caps').removeClass('invalid-caps');
+                
             },
             success: function (data) {
                 console.log(data);
@@ -32,7 +34,6 @@ $(document).ready(function () {
     $('#subscribe-button').on('click', function (e) {
         e.preventDefault();
         var li = $('.enteremail').val()
-        console.log(li)
         $.ajax({
             type: 'POST',
             url: '/link',
