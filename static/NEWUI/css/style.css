@@ -629,6 +629,9 @@ nav.nav-inner {
 	border: none;
 	cursor: pointer;
 }
+.subscribe-button-email{
+	border-radius: 4px;
+}
 .subcribe-form .subscribe-button i {
 	padding-right: 10px;
 }
