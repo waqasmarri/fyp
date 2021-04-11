@@ -810,7 +810,7 @@ nav.nav-inner {
 	left: 0;
 }
 .footer-socilal {
-	margin-top: 30px;
+	/* margin-top: 30px; */
 }
 .footer-socilal li,
 .order-wrap li {
@@ -6838,11 +6838,11 @@ section.parallax-section .section-title:before {
 }
 .invalid-image{
 	border: 0.15rem solid !important;
-	border-color:#ec235b !important;
+	border-color:#7b0707 !important;
 	border-radius:5px;
 }
 .invalid-caps{
-	color:#ec235b !important;
+	color:#af1111 !important;
 	font-weight :bold;
 }
 /* .invalid-link{

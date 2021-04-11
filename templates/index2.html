@@ -7,7 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="robots" content="index, follow" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link rel="shortcut icon" href="{{ url_for('static', filename='NEWUI/images/favicon.ico') }}">
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/brand.min.css">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='NEWUI/css/reset.css') }}">
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='NEWUI/css/plugins.css') }}">
   <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='NEWUI/css/style.css') }}">
@@ -300,7 +302,7 @@
               <div data-aos="fade-up" class="fl-wrap mar-top">
                 <div class="srv-link-text">
                   <h4>Need more info ? Download SRS : </h4>
-                  <a href="services.html" class="btn float-btn flat-btn color-btn">Download</a>
+                  <a href="static/srs.pdf" class="btn float-btn flat-btn color-btn">Download</a>
                 </div>
               </div>
             </div>
@@ -326,44 +328,64 @@
                   </div>
                 </div>
                 <div class="col-md-5">
-                  <div class="footer-header fl-wrap"><span>01.</span>Last Twitts</div>
+                  <div class="footer-header fl-wrap">Contributors</div>
                   <div class="footer-box fl-wrap">
-                    <div class="twitter-swiper-container fl-wrap" id="twitts-container"></div>
-                    <a href="#" class="btn float-btn trsp-btn">Follow</a>
+                    <div class="twitter-swiper-container fl-wrap" id="twitts-contaisner">
+                      <div class="custom-inner-content2 fl-wrap">
+                        <h4 class="text-white" style="text-align: left;">01. Sheikh Ismail</h4>
+                        <p> Designing and Development of Complete UI of website.
+                        </p>
+                      </div>
+                      <div class="custom-inner-content2 fl-wrap">
+                        <h4 class="text-white" style="text-align: left;">02. Mir Waqas Ahmed</h4>
+                        <p> Dataset preprocessing and Feature Extraction and integrated model with Flask API.
+                        </p>
+                      </div>
+                      <div class="custom-inner-content2 fl-wrap">
+                        <h4 class="text-white" style="text-align: left;">03. Ahsan Iqbal</h4>
+                        <p> Merged Image model and Caption model via Keras to perform predictions.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="footer-header fl-wrap" style="margin-top: 50px; margin-bottom: 15px; padding-bottom: 5px;">Special Thanks To Our Supervisor:</div>
+                      <div class="custom-inner-content2 fl-wrap">
+                        <h4 class="text-white" style="text-align: left;">Dr. Mumraiz Kasi</h4>
+                      </div>
                   </div>
                 </div>
                 <div class="col-md-5">
-                  <div class="footer-header fl-wrap"><span>02.</span> Subscribe / Contacts</div>
+                  <div class="footer-header fl-wrap">Contact Us</div>
                   <!-- footer-box-->
                   <div class="footer-box fl-wrap">
-                    <p>Want to be notified when we launch a new template or an udpate. Just sign up and
+                    <p>Want to be notified when we launch a new model or an udpate. Just sign up and
                       we'll send you a notification by email.</p>
                     <div class="subcribe-form fl-wrap">
                       <form id="subscribe" class="fl-wrap">
                         <input class="enteremail" name="email" id="subscribe-email2" placeholder="email" spellcheck="false" type="text">
-                        <button type="submit" id="subscribe-button2" class="subscribe-button"><i class="fal fa-paper-plane"></i> Send </button>
+                        <button type="button" id="subscribe-button2" class="subscribe-button"><i class="fal fa-paper-plane"></i> Send </button>
                         <label for="subscribe-email" class="subscribe-message"></label>
                       </form>
                     </div>
                     <!-- footer-contacts-->
-                    <div class="footer-contacts fl-wrap">
+                    <!-- <div class="footer-contacts fl-wrap">
                       <ul>
                         <li><i class="fal fa-phone"></i><span>Phone :</span><a href="#">+489756412322</a></li>
                         <li><i class="fal fa-envelope"></i><span>Email :</span><a href="#">yourmail@domain.com</a></li>
                         <li><i class="fal fa-map-marker"></i><span>Address</span><a href="#">USA
                             27TH Brooklyn NY</a></li>
                       </ul>
-                    </div>
+                    </div> -->
                     <!-- footer end -->
                     <!-- footer-socilal -->
-                    <div class="footer-socilal fl-wrap">
-                      <ul>
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-vk"></i></a></li>
-                      </ul>
-                    </div>
+                    <div class="footer-header fl-wrap" style="margin-top: 72px; margin-bottom: 15px; padding-bottom: 5px;">Sources:</div>
+                        <div class="footer-socilal fl-wrap">
+                          <ul>
+                            <li><a href="https://www.tensorflow.org" target="_blank"><i class="cib-tensorflow"></i></a></li>
+                            <li><a href="https://keras.io" target="_blank"><i class="cib-keras"></i></a></li>
+                            <li><a href="https://colab.research.google.com/" target="_blank"><i class="cib-google"></i></a></li>
+                            <li><a href="https://flask.palletsprojects.com/en/1.1.x/" target="_blank"><i class="cib-flask"></i></a></li>
+                          </ul>
+                        </div>
                     <!-- footer-socilal end -->
                   </div>
                   <!-- footer-box end-->
@@ -478,6 +500,7 @@
                     $('#img-caps').html('Caption: ' + data.caption);
                 },
                 error(request, error){
+                  $('#output').addClass('respimg');
                   $('#output').attr('src', "/static/NEWUI/images/all/2.jpg");
                   $('#img-caps').addClass('invalid-caps');
                   $('#img-caps').html('Error! Please try again.')
