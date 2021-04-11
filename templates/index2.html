@@ -31,15 +31,29 @@
           <div class="scroll-down-wrap">
             <span>Image Captioning</span>
           </div>
-          <nav class="scroll-nav scroll-init">
+          <nav class="scroll-nav scroll-init" id="desktop">
             <ul>
               <li><a class="scroll-link act-link" href="#sec1">Home</a></li>
               <li><a class="scroll-link" href="#sec2">Prediction</a></li>
               <li><a class="scroll-link" href="#sec3">How to Use</a></li>
               <li><a class="scroll-link" href="#sec4">How it Works</a></li>
-
             </ul>
           </nav>
+          <div id="mobile">
+              <div class="mob-nav-wrapper">
+                <div id="logo">Image Captioning</div>
+                <div id="ham" class="ham" onclick="toggleNav()"><i class="fal fa-bars"></i></div>
+              </div>
+            <nav class="scroll-nav scroll-init mob-nav">
+              <ul class="mobile-nav">
+                <li><a class="scroll-link act-link" href="#sec1">Home</a></li>
+                <li><a class="scroll-link" href="#sec2">Prediction</a></li>
+                <li><a class="scroll-link" href="#sec3">How to Use</a></li>
+                <li><a class="scroll-link" href="#sec4">How it Works</a></li>
+              </ul>
+            </nav>
+          </div>
+
         </div>
         <!-- scroll-nav-wrap end-->
 
