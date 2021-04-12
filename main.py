@@ -5,6 +5,7 @@ from Image_Captioning_InceptionV3 import predict_captions_manual, beam_search_pr
 import json
 import shutil
 import requests
+import random as rd
 
 app = Flask(__name__)
 
@@ -16,9 +17,10 @@ def home():
 def upload_file():
     if request.method == 'POST':
         f = request.files['file']
-        f.save(secure_filename(f.filename))
-        source = os.getcwd()+'\\'+f.filename
-        destination = 'static/'+f.filename
+        name = f.filename.replace(" ","")
+        f.save(secure_filename(name))
+        source = os.getcwd()+'\\'+name
+        destination = 'static/'+name
         shutil.move(source, destination)
         return returnResponse(destination)
 
@@ -28,7 +30,7 @@ def link():
         link = request.get_data()
         link = link.decode('UTF-8')
         response = requests.get(link)
-        destination = "static/"+link[8:12]+".jpg"
+        destination = "static/"+random()+".jpg"
         file = open(destination, "wb")
         file.write(response.content)
         file.close()
@@ -52,7 +54,7 @@ def link2():
         link = request.get_data()
         link = link.decode('UTF-8')
         response = requests.get(link)
-        destination = "static/"+link[8:12]+".jpg"
+        destination = "static/"+random()+".jpg"
         file = open(destination, "wb")
         file.write(response.content)
         file.close()
@@ -64,6 +66,16 @@ def returnResponse(destination):
     data ={"name": destination,"caption": predict_captions_manual(destination)}
     response = app.response_class(response=json.dumps(data),mimetype='application/json')
     return response
+
+def random():
+    random = rd.randint(1,1000000000)
+    rdlist = []
+    for _ in range(500):
+        while random not in rdlist:
+            rdlist.append(random)
+        while random in rdlist:
+            random = rd.randint(1,1000000000)
+    return str(random)
 
 
 if __name__ == '__main__':
