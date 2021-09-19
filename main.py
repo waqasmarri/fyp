@@ -119,8 +119,9 @@ def apiHome():
             fh.write(base64.decodebytes(request.data))
             fh.close()
         print("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
-        captions=beam_search_predictions_manual('static/sample.jpg', beam_index=3)
-        print("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
+        # captions=beam_search_predictions_manual('static/sample.jpg', beam_index=3)
+        captions=predict_captions_manual('static/sample.jpg')
+        print("DONEEEEEEEE")
         cap={"captions":captions}
         with open("text/data.json","w") as fjson:
             json.dump(cap,fjson)
