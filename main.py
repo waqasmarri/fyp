@@ -12,6 +12,8 @@ import jsonpickle
 import numpy as np
 import base64
 import sqlite3
+import nltk
+
 
 app = Flask(__name__)
 
@@ -119,7 +121,7 @@ def apiHome():
             fh.write(base64.decodebytes(request.data))
             fh.close()
         print("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
-        # captions=beam_search_predictions_manual('static/sample.jpg', beam_index=3)
+        # captions=beam_search_predictions_manual('static/sample.jpg', beam_index=5)
         captions=predict_captions_manual('static/sample.jpg')
         print("DONEEEEEEEE")
         cap={"captions":captions}
@@ -127,6 +129,8 @@ def apiHome():
             json.dump(cap,fjson)
         print()
         print()
+        data ={"name": 'static/sample.jpg',"caption": captions}
+        flag = saveToDb(data)
         return True
     else:
         return jsonify({
@@ -147,8 +151,15 @@ def saveToDb(data):
     result = cur.fetchmany(1)
     image_id = str(result[0][0] + 1)
 
+    lines = data['caption']
+    is_noun = lambda pos: pos[:2] == 'NN'
+    tokenized = nltk.word_tokenize(lines)
+    nouns = [word for (word, pos) in nltk.pos_tag(tokenized) if is_noun(pos)]
+    
+    
     cur.execute("INSERT INTO images(image_path)VALUES('"+data['name']+"')")
-    cur.execute("INSERT INTO objects(object_name,image_id)VALUES('"+data['name']+"','"+image_id+"')")
+    for object in nouns:
+        cur.execute("INSERT INTO objects(object_name,image_id)VALUES('"+object+"','"+image_id+"')")
     cur.execute("INSERT INTO captions(caption,accuracy,image_id)VALUES('"+data['caption']+"','"+str(rd.randint(50,90))+"','"+image_id+"')")
     conn.commit()
     return True
